@@ -1,0 +1,31 @@
+.Weather {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 85px;
+
+    &__Day {
+        margin: 1rem 0;
+        font-weight: normal;
+        font-size: 1rem;
+    }
+
+    &__Icon {
+        width: 50px;
+    }
+
+    &__Temperature {
+        font-size: 0.9rem;
+        margin-top: 1rem;
+        margin-bottom: 1em;
+        color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .Weather {
+        &__Icon {
+            width: 70px;
+        }
+    }
+}

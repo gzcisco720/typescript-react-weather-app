@@ -1,0 +1,48 @@
+.Forecast {
+    padding: 24px 36px;
+    order: -1;
+    min-height: 230px;
+
+    &__Header {
+        margin: 0;
+        margin-bottom: 0.5rem;
+        letter-spacing: 2px;
+        font-weight: 300;
+        font-size: 1rem;
+    }
+
+    &__Weathers {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        min-width: 280px;
+        flex-wrap: wrap;
+    }
+
+    &__Loading {
+        height: 80px;
+        width: 80px;
+        margin-top: 30px;
+    }
+}
+  
+@media screen and (min-width: 1024px) {
+    .Forecast {
+        padding: 0 48px;
+        flex: 1;
+        order: 1;
+    
+        &__Header {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        &__Weathers {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-width: 280px;
+        }
+    }
+}

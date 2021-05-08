@@ -1,0 +1,74 @@
+.Current {
+    display: flex;
+    padding: 40px 0;
+    flex-direction: column;
+    background-image: url(https://i.imgur.com/GhQZhaO.jpg);
+    background-size: cover;
+    border-top-left-radius: 32px;
+    border-top-right-radius: 32px;
+    color: white;
+    position: relative;
+
+
+    &__Content {
+        &--left {
+            padding: 0 24px;
+        }
+        &--right {
+            padding: 0 24px;
+            display: flex;
+            justify-content: center;
+            order: -1;
+        }
+    }
+
+    &__Metas {
+        margin-top: 3rem;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    &__Loading {
+        margin-top: 3rem;
+        text-align: center;
+        font-size: 3rem;
+    }
+
+    &__CurrentTemperature {
+        margin-top: 3rem;
+        text-align: center;
+        font-size: 5rem;
+    }
+
+    &__WeatherDesc {
+        text-align: center;
+        font-size: 1.5rem;
+        letter-spacing: 5px;
+        margin-top: 0.25rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .Current {
+        flex-direction: row;
+        padding: 64px 0;
+
+        &__Content {
+            &--left {
+                padding: 0 96px;
+            }
+            &--right {
+                padding: 0 96px;
+                flex: 1;
+                order: 1;
+                justify-content: flex-end;
+            }
+        }
+
+        &__CurrentTemperature {
+            margin: 0;
+            text-align: center;
+            font-size: 5rem;
+        }
+    }
+}    

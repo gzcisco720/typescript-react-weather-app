@@ -1,0 +1,30 @@
+.App {
+  min-height: 100vh;
+  text-align: center;
+  background-image: url(https://wallpaperaccess.com/full/2629319.png);
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__WeatherWrapper {
+    background: white;
+    border-radius: 32px;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.5);
+    max-width: 850px;
+  }
+  &__Search {
+    & input {
+      border-radius: 30px;
+      min-width: 350px;
+    }
+    & .form-group {
+      display: inline-block;
+    }
+    & .fa-info-circle {
+      margin-left: 10px;
+      font-size: 1.2rem;
+    }
+  }
+}

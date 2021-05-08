@@ -1,0 +1,14 @@
+.Meta {
+    text-align: center;
+    margin: 0 10px;
+    &__Title {
+        display: inline-block;
+        margin-bottom: 0.75rem;
+    }
+    
+    &__value {
+        font-size: 1.25rem;
+        letter-spacing: 1px;
+    }
+}
+
