@@ -13,13 +13,13 @@ export interface ICurrentState {
     error: IError | null;
 }
 
-const initalState: ICurrentState = {
+export const initalCurrentState: ICurrentState = {
     loading: false,
     data: null,
     error: null
 }
 
-const reducer = (state = initalState, action: CurrentWeatherActionTypes) => {
+const reducer = (state = initalCurrentState, action: CurrentWeatherActionTypes) => {
     switch (action.type) {
         case GET_CURRENT_WEATHER:
             return { ...state, ...{ loading: true, data: null, error: null } };

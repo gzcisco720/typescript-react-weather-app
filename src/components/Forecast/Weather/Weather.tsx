@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import IForecast from '../../../common/interfaces/IForecast';
 import './Weather.scss';
 

@@ -1,18 +1,34 @@
-import Forecast from "./Forecast";
-import { connect } from 'react-redux';
-import { createSelector } from 'reselect';
-import { IStore } from "../../common/interfaces/IStore";
-import { IForecastState } from "../../store/reducers/forecast.reducer";
+import * as React from 'react';
+import { useStore } from '../../store';
+import './styles.scss';
+import Weather from './Weather';
 
-const getCurrentSelector = createSelector(
-    (state: IStore) => state.forecast,
-    (forecast: IForecastState) => forecast,
-);
-
-const mapStateToProps = (state: IStore) => {
-    return {
-        forecastState: getCurrentSelector(state),
-    };
+const Forecast = () => {
+    const { forecast } = useStore();
+    const { data, loading } = forecast;
+    const nextFiveDays = data.slice(1, 6);
+    return (
+        <div className="Forecast">
+            <h2 className="Forecast__Header">Forecast for next 5 days</h2>
+            {
+                loading ? (
+                    <div className="spinner-border Forecast__Loading" role="status">
+                        <span className="sr-only">Loading ...</span>
+                    </div>
+                ) : (
+                    <div className="Forecast__Weathers">
+                        {
+                            nextFiveDays.map((forecast, index)=>(
+                                <div key={index} className="Forecast__WeatherWrapper">
+                                    <Weather {...forecast}/>
+                                </div>
+                            ))
+                        }
+                    </div>
+                )
+            }
+        </div>
+    );
 };
 
-export default connect(mapStateToProps)(Forecast);
+export default Forecast;

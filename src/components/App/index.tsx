@@ -1,16 +1,58 @@
-import { connect } from 'react-redux';
-import { AnyAction } from 'redux';
-import { ThunkDispatch } from 'redux-thunk';
-import { IStore } from '../../common/interfaces/IStore';
-import fetchCurrentWeather from '../../store/thunk/current.thunk';
-import fetchForecast from '../../store/thunk/forecast.thunk';
-import App from './App';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useMemo, useState, useCallback } from 'react';
+import './styles.scss';
+import Current from '../Current';
+import Forecast from '../Forecast';
+import { debounce } from 'lodash';
+import { fetchCurrentWeather }  from '../../store/actions/current.action'
+import { fetchForecast }  from '../../store/actions/forecast.action'
+import { useDispatch } from '../../store';
+const App = () => {
+  const [searchCity, setSearchCity] = useState('');
 
-const mapDispatchToProps = (dispatch: ThunkDispatch<IStore, {}, AnyAction>) => {
-    return {
-        fetchCurrent: (city:string) => dispatch(fetchCurrentWeather(city)),
-        fetchForecast: (city:string) => dispatch(fetchForecast(city))
-    };
-};
+  const dispatch = useDispatch();
+  const getCurrent = useMemo(() => fetchCurrentWeather(dispatch), [dispatch]);
+  const getForecast = useMemo(() => fetchForecast(dispatch), [dispatch]);
 
-export default connect(null, mapDispatchToProps)(App);
+  useEffect(() => {
+    getCurrent('Melbourne,AU')
+    getForecast('Melbourne,AU')
+  }, [getCurrent, getForecast])
+
+  const search = useCallback(debounce((serachText: string) => {
+    let cityName = serachText ? serachText : "Melbourne,AU";
+    getCurrent(cityName);
+    getForecast(cityName);
+  }, 1000), []);
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const cityName = event.currentTarget.value;
+    setSearchCity(cityName);
+    search(cityName)
+  }
+  
+  return (
+    <div className="App">
+      <div className="App__Search">
+        <div className="form-group">
+          <input type="text" 
+            className="form-control" 
+            id="searchCity"
+            value={searchCity}
+            onChange={handleSearchChange}
+            placeholder="search, for example 'Melbourne,AU'" />
+        </div>
+      </div>
+      <div className="App__WeatherWrapper">
+        <div className="App__WeatherCurrent">
+          <Current />
+        </div>
+        <div className="App__WeatherForecast">
+          <Forecast />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default App;

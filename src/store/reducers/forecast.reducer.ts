@@ -14,13 +14,13 @@ export interface IForecastState {
     error: IError | null;
 }
 
-const initalState: IForecastState = {
+export const initalForecastState: IForecastState = {
     loading: false,
     data: [],
     error: null
 }
 
-const reducer = (state = initalState, action: ForecastActionTypes) => {
+const reducer = (state = initalForecastState, action: ForecastActionTypes) => {
     switch (action.type) {
         case GET_FORECAST:
             return { ...state, ...{ loading: true, data: [], error: null } };
