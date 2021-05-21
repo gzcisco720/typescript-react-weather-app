@@ -3,7 +3,7 @@ import { WHEATHER_BASE_URL } from '../common/config/constants';
 
 const WeatherbitApp = axios.create();
 
-const initRequestHeader = (config: AxiosRequestConfig) => {
+export const initRequestHeader = (config: AxiosRequestConfig) => {
   config.baseURL = WHEATHER_BASE_URL;
   config.params.key = process.env.REACT_APP_API_KEY;
   return config;

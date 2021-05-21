@@ -1,22 +1,34 @@
-import * as React from 'react';
-import { render, RenderResult } from '@testing-library/react';
-import Forecast from './Forecast';
+import  React from 'react';
+import Forecast from '.';
+import { mockForecast } from '../../mocks/forecast';
+import { renderWithStore } from '../../mocks/renderWithStore';
+import { mockInitialStore } from '../../mocks/store';
 
 describe('<Meta>', () => {
-    let renderResult: RenderResult;
-
-    const props = {
-        forecastState: {
-            loading: false,
-            data: [],
-            error: null
-        }
-    }
 
     it('should render loading text', () => {
-        props.forecastState.loading = true
-        renderResult = render(<Forecast forecastState={props.forecastState} />);
-        const { getByText } = renderResult;
+        const { getByText } = renderWithStore(<Forecast />, {
+            ...mockInitialStore,
+            forecast: {
+                loading: true,
+                data: [],
+                error: null
+            }
+        });
         expect(getByText("Loading ...")).toBeInTheDocument();
+    });
+    it('should render correct info', () => {
+        const { getByTestId, getByText } = renderWithStore(<Forecast />, {
+            ...mockInitialStore,
+            forecast: {
+                loading: false,
+                data: mockForecast,
+                error: null
+            }
+        });
+        expect(getByTestId('forecasts')).toBeInTheDocument();
+        expect(getByTestId('forecasts').children.length).toEqual(5);
+        expect(getByText('Max: 19.4')).toBeInTheDocument();
+        expect(getByText('Min: 8')).toBeInTheDocument();
     });
 });

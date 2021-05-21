@@ -30,7 +30,7 @@ export default interface IForecast  {
     "clouds_hi": number;
     "clouds": number;
     "vis": number;
-    "max_dhi": number;
+    "max_dhi": number | null;
     "uv": number;
     "moon_phase": number;
     "moon_phase_lunation": number;

@@ -1,16 +1,34 @@
-import { connect } from 'react-redux';
-import { AnyAction } from 'redux';
-import { ThunkDispatch } from 'redux-thunk';
-import { IStore } from '../../common/interfaces/IStore';
-import fetchCurrentWeather from '../../store/thunk/current.thunk';
-import fetchForecast from '../../store/thunk/forecast.thunk';
-import App from './App';
+import  React from 'react';
+import './App.scss';
+import Current from '../Current';
+import Forecast from '../Forecast';
+import { useHandleSearchChange } from './hooks';
 
-const mapDispatchToProps = (dispatch: ThunkDispatch<IStore, {}, AnyAction>) => {
-    return {
-        fetchCurrent: (city:string) => dispatch(fetchCurrentWeather(city)),
-        fetchForecast: (city:string) => dispatch(fetchForecast(city))
-    };
-};
+const App = () => {
+    const {searchCity, handleSearchChange} = useHandleSearchChange();
+    return (
+        <div className="App">
+        <div className="App__Search">
+            <div className="form-group">
+            <input type="text" 
+                className="form-control" 
+                id="searchCity"
+                data-testid="searchCity"
+                value={searchCity}
+                onChange={handleSearchChange}
+                placeholder="search, for example 'Melbourne,AU'" />
+            </div>
+        </div>
+        <div className="App__WeatherWrapper">
+            <div className="App__WeatherCurrent">
+            <Current />
+            </div>
+            <div className="App__WeatherForecast">
+            <Forecast />
+            </div>
+        </div>
+        </div>
+    );
+}
 
-export default connect(null, mapDispatchToProps)(App);
+export default App;

@@ -1,5 +1,6 @@
-import { ICurrentState } from "../../store/reducers/current.reducer";
-import { IForecastState } from "../../store/reducers/forecast.reducer";
+import { ICurrentState } from "./ICurrentState";
+import { IForecastState } from "./IForecastState";
+
 export interface IStore {
     current: ICurrentState
     forecast: IForecastState
