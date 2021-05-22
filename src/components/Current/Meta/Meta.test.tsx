@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, RenderResult } from '@testing-library/react';
-import Meta from './Meta';
+import Meta from '.';
 
 describe('<Meta>', () => {
     let renderResult: RenderResult;
@@ -16,7 +16,6 @@ describe('<Meta>', () => {
 
     it('should render day', () => {
         const { getByText } = renderResult;
-
         expect(getByText(props.title)).toBeInTheDocument();
         expect(getByText(props.value)).toBeInTheDocument();
     });
