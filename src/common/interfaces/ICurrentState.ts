@@ -1,5 +1,5 @@
-import ICurrentWeather from "./ICurrentWeather";
-import IError from "./IError";
+import ICurrentWeather from './ICurrentWeather';
+import IError from './IError';
 
 export interface ICurrentState {
   loading: boolean;

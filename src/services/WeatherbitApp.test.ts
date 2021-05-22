@@ -1,4 +1,4 @@
-import { initRequestHeader } from "./WeatherbitApp"
+import { initRequestHeader } from './WeatherbitApp';
 
 describe('WeatherbitApp', () => {
   it('should return correct config value', () => {
@@ -6,10 +6,10 @@ describe('WeatherbitApp', () => {
     const config = initRequestHeader({
       baseURL: '',
       params: {
-        key: ''
-      }
+        key: '',
+      },
     });
     expect(config.baseURL).toEqual('https://api.weatherbit.io/v2.0');
     expect(config.params.key).toEqual('abc');
-  })
-})
+  });
+});

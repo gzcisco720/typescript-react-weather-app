@@ -1,0 +1,4 @@
+build
+.husky
+public
+node_modules

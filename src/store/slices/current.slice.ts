@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { ICurrentState } from '../../common/interfaces/ICurrentState';
 import ICurrentWeather from '../../common/interfaces/ICurrentWeather';
 import IError from '../../common/interfaces/IError';
@@ -8,40 +8,40 @@ import WeatherbitApp from '../../services/WeatherbitApp';
 const initialState: ICurrentState = {
   loading: false,
   data: null,
-  error: null
-}
+  error: null,
+};
 
 export const fetchCurrentWeather = createAsyncThunk<
-  ICurrentWeather, 
+  ICurrentWeather,
   string,
   {
-    rejectValue: IError
+    rejectValue: IError;
   }
->(
-  'current/fetchByCity',
-  async (city: string, { rejectWithValue }) => {
-    try {
-      const res = await WeatherbitApp.get<IGetCurrentWeatherResponse>('/current', {
-        params: { city }
-      });
-      const { data } = res;
-      const { data: weatherList } = data;
-      if(weatherList && weatherList.length > 0 ) {
-        return weatherList[0];
-      } else {
-        return rejectWithValue({
-          code: 404,
-          message: "Weather data not found"
-        })
-      }
-    } catch (error) {
+>('current/fetchByCity', async (city: string, { rejectWithValue }) => {
+  try {
+    const res = await WeatherbitApp.get<IGetCurrentWeatherResponse>(
+      '/current',
+      {
+        params: { city },
+      },
+    );
+    const { data } = res;
+    const { data: weatherList } = data;
+    if (weatherList && weatherList.length > 0) {
+      return weatherList[0];
+    } else {
       return rejectWithValue({
-        code: error.response.status,
-        message: error.message
-      })
+        code: 404,
+        message: 'Weather data not found',
+      });
     }
+  } catch (error) {
+    return rejectWithValue({
+      code: error.response.status,
+      message: error.message,
+    });
   }
-)
+});
 
 export const currentSlice = createSlice({
   name: 'current',
@@ -61,13 +61,13 @@ export const currentSlice = createSlice({
     builder.addCase(fetchCurrentWeather.rejected, (state, action) => {
       state.loading = false;
       state.data = null;
-      if (action.payload) { 
+      if (action.payload) {
         state.error = action.payload;
       } else {
         state.error = { code: 500, message: 'unknown error' };
       }
     });
-  }
-})
+  },
+});
 
 export default currentSlice.reducer;

@@ -4,7 +4,6 @@
 
 - React
 - Redux
-- Redux-thunk
 - Jest
 - Scss
 - [Weatherbit public api](https://www.weatherbit.io/)
@@ -14,6 +13,7 @@
 `yarn start`
 
 ## Build
+
 `yarn build`
 
 ## Test
@@ -25,6 +25,7 @@ test store: `yarn test:store`
 test all: `yarn test`
 
 ## Configuration
+
 create a .env file at the root level
 
 REACT_APP_API_KEY = <Your Weatherbit API key>

@@ -1,5 +1,5 @@
-import IError from "./IError";
-import IForecast from "./IForecast";
+import IError from './IError';
+import IForecast from './IForecast';
 
 export interface IForecastState {
   loading: boolean;

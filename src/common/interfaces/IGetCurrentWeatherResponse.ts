@@ -1,7 +1,7 @@
-import { count } from "console"
-import ICurrentWather from "./ICurrentWeather";
+import { count } from 'console';
+import ICurrentWather from './ICurrentWeather';
 
 export default interface IGetCurrentWeatherResponse {
-    data: ICurrentWather[];
-    count: number;
+  data: ICurrentWather[];
+  count: number;
 }

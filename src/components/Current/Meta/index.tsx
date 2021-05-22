@@ -1,15 +1,12 @@
-import  React from 'react';
-import './Meta.scss'
+import React from 'react';
+import './Meta.scss';
 
 interface IProps {
   title: string;
-  value: string|number;
+  value: string | number;
 }
 
-const Meta = ({
-  title,
-  value,
-}: IProps) => (
+const Meta = ({ title, value }: IProps) => (
   <div className="Meta">
     <span className="Meta__Title">{title}</span>
     <br />

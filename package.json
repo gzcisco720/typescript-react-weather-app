@@ -19,7 +19,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --coverage --colors --silent --watchAll=false",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepare": "husky install",
+    "format": "yarn prettier --write ."
   },
   "eslintConfig": {
     "extends": [
@@ -52,6 +54,8 @@
     "@types/react-redux": "^7.1.16",
     "@types/redux-mock-store": "^1.0.2",
     "concurrently": "^5.3.0",
+    "husky": "^6.0.0",
+    "prettier": "2.3.0",
     "redux-mock-store": "^1.5.4"
   },
   "jest": {

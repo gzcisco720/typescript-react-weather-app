@@ -1,22 +1,18 @@
 import React from 'react';
 
 interface IProps {
-    color?: string;
-    width?: string;
-    className?: string;
+  color?: string;
+  width?: string;
+  className?: string;
 }
 
-const VerticalDivider = ({
-  color,
-  width,
-  className,
-}: IProps) => (
-  <div 
+const VerticalDivider = ({ color, width, className }: IProps) => (
+  <div
     className={className}
     style={{
       width,
       backgroundColor: color,
-    }} 
+    }}
   />
 );
 
