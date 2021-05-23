@@ -1,7 +1,8 @@
 # weather-app
 
-## What is included
+## What are included
 
+- Typescript
 - React
 - Redux
 - Jest
@@ -18,13 +19,11 @@
 
 ## Test
 
-test component: `yarn test:component`
-
-test store: `yarn test:store`
-
-test all: `yarn test`
+`yarn test`
 
 ## Configuration
+
+go visit [Weatherbit public api](https://www.weatherbit.io/) and register an account to get the API key
 
 create a .env file at the root level
 
