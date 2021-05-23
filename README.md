@@ -27,4 +27,4 @@ go visit [Weatherbit public api](https://www.weatherbit.io/) and register an acc
 
 create a .env file at the root level
 
-REACT_APP_API_KEY = '<Your Weatherbit API key>'
+REACT_APP_API_KEY = \<Your Weatherbit API key\>
