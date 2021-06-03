@@ -26,7 +26,7 @@ describe('<Meta>', () => {
       },
     });
     expect(getByTestId('forecasts')).toBeInTheDocument();
-    expect(getByTestId('forecasts').children.length).toEqual(5);
+    expect(getByTestId('forecasts').children.length).toEqual(7);
     expect(getByText('Max: 19.4')).toBeInTheDocument();
     expect(getByText('Min: 8')).toBeInTheDocument();
   });

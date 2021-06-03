@@ -15,9 +15,8 @@
     }
     &--right {
       padding: 0 24px;
-      display: flex;
-      justify-content: center;
       order: -1;
+      text-align: center;
     }
   }
 
@@ -44,6 +43,20 @@
     font-size: 1.5rem;
     letter-spacing: 5px;
     margin-top: 0.25rem;
+  }
+
+  &__City {
+    font-size: 2rem;
+    font-weight: 500;
+    line-height: 1.2;
+    display: block;
+  }
+
+  &__Date {
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.2;
+    display: block;
   }
 }
 

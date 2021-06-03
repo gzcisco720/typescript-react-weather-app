@@ -6,10 +6,10 @@ import Weather from './Weather';
 const Forecast = () => {
   const forecastState = useAppSelector((state) => state.forecast);
   const { data, loading } = forecastState;
-  const nextFiveDays = data.slice(1, 6);
+  const nextFiveDays = data.slice(1, 8);
   return (
     <div className="Forecast">
-      <h2 className="Forecast__Header">Forecast for next 5 days</h2>
+      <h2 className="Forecast__Header">Forecast for next 7 days</h2>
       {loading ? (
         <div className="spinner-border Forecast__Loading" role="status">
           <span className="sr-only">Loading ...</span>

@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import IForecast from '../../../common/interfaces/IForecast';
 import './Weather.scss';
+import getDay from 'date-fns/getDay'
 
 const Weather = (props: IForecast) => {
   const { valid_date, weather, max_temp, min_temp } = props;
@@ -16,7 +17,7 @@ const Weather = (props: IForecast) => {
     ],
     [],
   );
-  const date = useMemo(() => new Date(valid_date).getDate(), [valid_date]);
+  const date = useMemo(() => getDay(new Date(valid_date)), [valid_date]);
   return (
     <div className="Weather">
       <h3 className="Weather__Day">{days[date]}</h3>
