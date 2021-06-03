@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import IForecast from '../../../common/interfaces/IForecast';
 import './Weather.scss';
-import getDay from 'date-fns/getDay'
+import getDay from 'date-fns/getDay';
 
 const Weather = (props: IForecast) => {
   const { valid_date, weather, max_temp, min_temp } = props;

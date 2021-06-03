@@ -3,13 +3,13 @@ import './Current.scss';
 import Meta from './Meta';
 import VerticalDivider from '../VerticalDivider';
 import { useAppSelector } from '../../store';
-import { format, compareAsc } from 'date-fns'
+import { format, compareAsc } from 'date-fns';
 
 const Current = () => {
   const currentState = useAppSelector((state) => state.current);
   const { data, loading } = currentState;
-  const date = format(new Date(), 'EEEE, MMMM do, yyyy')
-console.log(date);
+  const date = format(new Date(), 'EEEE, MMMM do, yyyy');
+  console.log(date);
   return (
     <div className="Current">
       <div className="Current__Content--left">
@@ -37,9 +37,7 @@ console.log(date);
             ? `${data.city_name}, ${data.country_code}`
             : 'Data Not Available'}
         </h1>
-        <h1 className="Current__Date">
-          {date}
-        </h1>
+        <h1 className="Current__Date">{date}</h1>
       </div>
     </div>
   );
