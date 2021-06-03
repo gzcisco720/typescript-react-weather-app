@@ -1,22 +1,32 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import './Current.scss';
 import Meta from './Meta';
 import VerticalDivider from '../VerticalDivider';
 import { useAppSelector } from '../../store';
-import { format, compareAsc } from 'date-fns';
+import { format } from 'date-fns';
 
 const Current = () => {
   const currentState = useAppSelector((state) => state.current);
   const { data, loading } = currentState;
-  const date = format(new Date(), 'EEEE, MMMM do, yyyy');
-  console.log(date);
+  const date = useMemo(() => format(new Date(), 'EEEE, MMMM do, yyyy'), []);
+  const srCountryCode = useMemo(
+    () => data?.country_code.split('').join(' '),
+    [data?.country_code],
+  );
   return (
     <div className="Current">
       <div className="Current__Content--left">
         {loading ? (
           <div className="Current__Loading">Loading ...</div>
         ) : (
-          <div className="Current__CurrentTemperature">
+          <div
+            className="Current__CurrentTemperature"
+            tabIndex={0}
+            aria-label={`
+              temperature in ${data?.city_name} ${srCountryCode}, now is ${data?.app_temp} degree,
+              weather is ${data?.weather.description}
+            `}
+          >
             <span>{data ? data.app_temp : '00.0'}</span>
             <span>&nbsp;</span>
             <span>&#176;</span>
@@ -31,7 +41,13 @@ const Current = () => {
           <Meta title="WIND" value={`${data ? data.wind_spd : 0} m/s`} />
         </div>
       </div>
-      <div className="Current__Content--right">
+      <div
+        className="Current__Content--right"
+        tabIndex={0}
+        aria-label={`
+          current city is ${data?.city_name}, ${srCountryCode}, current date is ${date}
+        `}
+      >
         <h1 className="Current__City">
           {data
             ? `${data.city_name}, ${data.country_code}`
