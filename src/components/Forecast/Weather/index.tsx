@@ -17,7 +17,10 @@ const days = [
 const Weather = (props: IForecast) => {
   const { valid_date, weather, max_temp, min_temp } = props;
   const dayOfWeek = useMemo(() => getDay(new Date(valid_date)), [valid_date]);
-  const date = useMemo(() => format(new Date(valid_date), 'EEEE, MMMM do, yyyy'), [valid_date]);
+  const date = useMemo(
+    () => format(new Date(valid_date), 'EEEE, MMMM do, yyyy'),
+    [valid_date],
+  );
   return (
     <div
       className="Weather"
