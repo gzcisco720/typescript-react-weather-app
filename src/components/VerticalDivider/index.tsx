@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 interface IProps {
   color?: string;
@@ -16,4 +16,4 @@ const VerticalDivider = ({ color, width, className }: IProps) => (
   />
 );
 
-export default VerticalDivider;
+export default memo(VerticalDivider);

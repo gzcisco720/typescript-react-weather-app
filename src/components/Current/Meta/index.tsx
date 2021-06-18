@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import './Meta.scss';
 
 interface IProps {
@@ -14,4 +14,4 @@ const Meta = ({ title, value }: IProps) => (
   </div>
 );
 
-export default Meta;
+export default memo(Meta);

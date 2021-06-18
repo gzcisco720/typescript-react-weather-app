@@ -1,28 +1,23 @@
-import React, { useMemo } from 'react';
+import React, { memo, useMemo } from 'react';
 import IForecast from '../../../common/interfaces/IForecast';
 import './Weather.scss';
 import getDay from 'date-fns/getDay';
 import { format } from 'date-fns';
 
+const days = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+];
+
 const Weather = (props: IForecast) => {
   const { valid_date, weather, max_temp, min_temp } = props;
-  const days = useMemo(
-    () => [
-      'Sunday',
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
-    ],
-    [],
-  );
   const dayOfWeek = useMemo(() => getDay(new Date(valid_date)), [valid_date]);
-  const date = useMemo(
-    () => format(new Date(valid_date), 'EEEE, MMMM do, yyyy'),
-    [valid_date],
-  );
+  const date = useMemo(() => format(new Date(valid_date), 'EEEE, MMMM do, yyyy'), [valid_date]);
   return (
     <div
       className="Weather"
@@ -55,4 +50,4 @@ const Weather = (props: IForecast) => {
   );
 };
 
-export default Weather;
+export default memo(Weather);
